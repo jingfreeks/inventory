@@ -11,9 +11,9 @@ export default{
     },
     labelStyle: {
         fontSize: 18,
-        paddingLeft: 20,
+        //paddingLeft: 20,
         paddingBottom:2,
-        flex: 1,
+        flex: 1.5,
     },
     containerStyle: {
         height: 40,
