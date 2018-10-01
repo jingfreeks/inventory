@@ -1,11 +1,11 @@
 
 import React, { Component } from 'react';
 import { Text, View } from 'react-native';
-import { Textbox, Button } from '../../../component/common';
-import { Container, Content,Card,CardSection } from '../../../component';
+import { Textbox, Button } from '../../component/common';
+import { Container, Content,Card,CardSection } from '../../component';
 
 
-export default class Login extends Component {
+export default class dashBoard extends Component {
     render() {
         return(
             <View>

@@ -1,47 +1,57 @@
 import React, { Component } from 'react';
 import { Text, View } from 'react-native';
 import Login from './form/security/login';
+import Useraccount from './form/security/useraccounts';
+import DashBoard from './form/dashboard';
+import Category from './form/setups/category';
+import Product from './form/setups/product';
+import Invtype from './form/setups/invType';
+import ReportInvBalance from './form/report/invBalance';
+import ReportProduct from './form/report/product';
+import ReportReleasing from './form/report/releasing';
+import ReportRecieving from './form/report/recieving';
+
 import { createStackNavigator } from 'react-navigation';
 
-const dashBoardNav=createStackNavigation({
-    dashBoard:{
-        screen: dashBoard
+const dashBoardNav=createStackNavigator({
+    DashBoard:{
+        screen: DashBoard
     },
 });
 
-const securityNav=createStackNavigation({
+const securityNav=createStackNavigator({
     Login:{
         screen:Login
     },
     Useraccount:{
-        screen:useraccount
+        screen:Useraccount
     }
 });
 
-const setupNav=createStackNavigation({
+const setupNav=createStackNavigator({
     Category:{
-        screen:category
+        screen:Category
     },
     Product:{
-        screen:product
+        screen:Product
     },
     InvType:{
-        screen:invtype
+        screen:Invtype
     }
 });
 
-const reportsNav=createStackNavigation({
+const reportsNav=createStackNavigator({
     ReportInvBalance:{
-        screen:rptinvBalance
+        screen:ReportInvBalance
     },
     ReportProduct:{
-        screen:rptproduct
+        screen:ReportProduct
     },
     ReportRecieving:{
-        screen:rptrecieving
+        screen:ReportRecieving
     },
     ReportReleasing:{
-        screen:rptreleasing
+        screen:ReportReleasing
     }
 });
 
@@ -50,8 +60,8 @@ const Navigator=createStackNavigator({
     Home:{
         screen:Login
     },
-    dashBoard:{
-      screen:dashBoard  
+    DashBoard:{
+      screen:DashBoard  
     },
     Login:{
         screen:Login
@@ -79,10 +89,12 @@ const Navigator=createStackNavigator({
     }
 
 })
-export default class Navigator extends Component {
+
+export default Navigator;
+/*export default class Navigator extends Component {
     render() {
         return (
             <Login />
         );
     }
-}
+}*/
