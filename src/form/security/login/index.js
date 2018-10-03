@@ -5,6 +5,12 @@ import { Container, Content,Card,CardSection } from '../../../component';
 import styles from './style';
 
 export default class Login extends Component {
+
+_onlogin=()=>{
+    //this.props.navigation.navigate('EmprDashBoard'); 
+    console.log('laaaaaaaaaaaaggggggggg');
+    this.props.navigation.navigate('DashBoard'); 
+}
     render() {
         return (
             <Container>
@@ -27,7 +33,7 @@ export default class Login extends Component {
                         </CardSection>
                         <CardSection>
                             <View style={styles.textbox}>
-                                <Button>
+                                <Button  onPress={() => this._onlogin()}>
                                     login
                                 </Button>
                             </View>

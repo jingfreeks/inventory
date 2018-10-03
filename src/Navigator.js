@@ -3,9 +3,15 @@ import { Text, View } from 'react-native';
 import Login from './form/security/login';
 import Useraccount from './form/security/useraccounts';
 import DashBoard from './form/dashboard';
+import TransDashBoard from './form/transaction/dashboard';
+import TransReceiving from './form/transaction/receiving';
+import TransReleasing from './form/transaction/releasing';
+
+import SetupDashBoard from './form/setups/dashboard';
 import Category from './form/setups/category';
 import Product from './form/setups/product';
-import Invtype from './form/setups/invType';
+import Invtypes from './form/setups/invtype';
+
 import ReportInvBalance from './form/report/invBalance';
 import ReportProduct from './form/report/product';
 import ReportReleasing from './form/report/releasing';
@@ -18,6 +24,15 @@ const dashBoardNav=createStackNavigator({
         screen: DashBoard
     },
 });
+
+const transactionNav=createStackNavigator({
+    TransReceiving:{
+        screen:TransReceiving
+    },
+    TransReleasing:{
+        screen:TransReleasing
+    },
+}); 
 
 const securityNav=createStackNavigator({
     Login:{
@@ -35,8 +50,8 @@ const setupNav=createStackNavigator({
     Product:{
         screen:Product
     },
-    InvType:{
-        screen:Invtype
+    Invtypes:{
+        screen:Invtypes
     }
 });
 
@@ -61,7 +76,10 @@ const Navigator=createStackNavigator({
         screen:Login
     },
     DashBoard:{
-      screen:DashBoard  
+      screen:DashBoard,
+    },
+    SetupDashBoard:{
+        screen:SetupDashBoard,
     },
     Login:{
         screen:Login
@@ -75,8 +93,8 @@ const Navigator=createStackNavigator({
     Product:{
         screen:Product
     },
-    InvType:{
-        screen:Invtype
+    Invtypes:{
+        screen:Invtypes
     },
     ReportInvBalance:{
         screen:ReportInvBalance
@@ -86,7 +104,19 @@ const Navigator=createStackNavigator({
     },
     ReportReleasing:{
         screen:ReportReleasing
-    }
+    },
+    ReportRecieving:{
+        screen:ReportRecieving
+    },
+    TransDashBoard:{
+        screen:TransDashBoard
+    },
+    TransReceiving:{
+        screen:TransReceiving
+    },
+    TransReleasing:{
+        screen:TransReleasing
+    },
 
 })
 

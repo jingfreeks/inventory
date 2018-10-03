@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Text, View } from 'react-native';
-import { Textbox, Button } from '../../component/common';
-import { Container, Content,Card,CardSection } from '../../component';
+import { Textbox, Button } from '../../../component/common';
+import { Container, Content,Card,CardSection } from '../../../component';
 import styles from './style';
 
-export default class dashBoard extends Component {
+export default class SetupDashBoard extends Component {
 
     static navigationOptions = {
-        title: 'Home',
+        title: 'SETUPS',
         headerStyle: {
           backgroundColor: 'white'
         },
@@ -20,39 +20,46 @@ export default class dashBoard extends Component {
 
     }
 
+
     _onLogout=()=>{
-        this.props.navigation.navigate('Login'); 
+        this.props.navigation.navigate('DashBoard'); 
     }
-    _onTransaction=()=>{
-        this.props.navigation.navigate('TransDashBoard'); 
+
+    _onCategory=()=>{
+        this.props.navigation.navigate('Category'); 
     }
-    _onSetup=()=>{
-        this.props.navigation.navigate('SetupDashBoard'); 
+
+    _onInvType=()=>{
+        console.log('test')
+        this.props.navigation.navigate('Invtypes'); 
+        //this.props.navigation.navigate('Product'); 
     }
-    _onReport=()=>{
-        this.props.navigation.navigate('TransDashBoard'); 
+
+    _onProduct=()=>{   
+        this.props.navigation.navigate('Product'); 
+        
     }
     render() {
         return(
             <View style={styles.container}>
                 <View style={styles.textbox}>
-                    <Button onPress={() => this._onTransaction()}>
-                        Report
+                    <Button onPress={() => this._onCategory()}>
+                        CATEGORY
                     </Button>
                 </View>
                 <View style={styles.textbox}>
-                    <Button onPress={() => this._onTransaction()}>
-                        Transaction
+                    <Button onPress={() => this._onInvType()}>
+                        INVENTORY TYPE
                     </Button>
                 </View>
                 <View style={styles.textbox}>
-                    <Button onPress={()=>this._onSetup()}>
-                        Setups
+                    <Button onPress={() => this._onProduct()}>
+                        PRODUCT
                     </Button>
                 </View>
                 <View style={styles.textbox}>
                     <Button onPress={() => this._onLogout()}>
-                        Logout
+                        EXIT
                     </Button>
                 </View>
             </View>

@@ -5,7 +5,19 @@ import { Textbox, Button } from '../../../component/common';
 import { Container, Content,Card,CardSection } from '../../../component';
 
 
-export default class Login extends Component {
+export default class Invtype extends Component {
+    static navigationOptions = {
+        title: 'INVENTORY TYPE',
+        headerStyle: {
+          backgroundColor: 'white'
+        },
+        headerTitleStyle :{
+            alignSelf: 'center',
+            width: '90%',
+            textAlign: 'center',
+        },
+
+    }
     render() {
         return(
             <View>
