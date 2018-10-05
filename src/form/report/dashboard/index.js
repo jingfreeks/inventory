@@ -7,7 +7,7 @@ import styles from './style';
 export default class SetupDashBoard extends Component {
 
     static navigationOptions = {
-        title: 'TRANSACTION',
+        title: 'REPORT',
         headerStyle: {
           backgroundColor: 'white'
         },
@@ -37,8 +37,7 @@ export default class SetupDashBoard extends Component {
         this.props.navigation.navigate('ReportProduct'); 
     }
     _onInventoryBalance=()=>{
-        ReportInvBalance
-        this.props.navigation.navigate('ReportProduct'); 
+        this.props.navigation.navigate('ReportInvBalance'); 
     }
     render() {
         return(
@@ -59,7 +58,7 @@ export default class SetupDashBoard extends Component {
                     </Button>
                 </View>
                 <View style={styles.textbox}>
-                    <Button onPress={() => this._onLogout()}>
+                    <Button onPress={() => this._onInventoryBalance()}>
                         INVENTORY BALANCE
                     </Button>
                 </View>

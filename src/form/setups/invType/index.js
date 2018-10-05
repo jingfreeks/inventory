@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Text, View } from 'react-native';
 import { Textbox, Button } from '../../../component/common';
 import { Container, Content,Card,CardSection } from '../../../component';
-
+import InvForm from './forms';
 
 export default class Invtype extends Component {
     static navigationOptions = {
@@ -20,9 +20,7 @@ export default class Invtype extends Component {
     }
     render() {
         return(
-            <View>
-                <Textbox>test</Textbox>
-            </View>
+            <InvForm />
         );
     }    
 }

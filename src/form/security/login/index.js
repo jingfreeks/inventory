@@ -5,12 +5,23 @@ import { Container, Content,Card,CardSection } from '../../../component';
 import styles from './style';
 
 export default class Login extends Component {
+    static navigationOptions = {
+        title: 'LOGIN',
+        headerStyle: {
+          backgroundColor: 'white'
+        },
+        headerTitleStyle :{
+            alignSelf: 'center',
+            width: '90%',
+            textAlign: 'center',
+        },
+        headerLeft: null,
+    }
 
-_onlogin=()=>{
-    //this.props.navigation.navigate('EmprDashBoard'); 
-    console.log('laaaaaaaaaaaaggggggggg');
-    this.props.navigation.navigate('DashBoard'); 
-}
+    _onlogin=()=>{
+        this.props.navigation.navigate('DashBoard'); 
+    }
+    
     render() {
         return (
             <Container>

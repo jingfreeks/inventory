@@ -7,7 +7,7 @@ import { Container, Content,Card,CardSection } from '../../../component';
 
 export default class Login extends Component {
     static navigationOptions = {
-        title: 'TRANSACTION',
+        title: 'RELEASING',
         headerStyle: {
           backgroundColor: 'white'
         },

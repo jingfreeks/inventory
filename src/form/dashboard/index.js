@@ -30,13 +30,13 @@ export default class dashBoard extends Component {
         this.props.navigation.navigate('SetupDashBoard'); 
     }
     _onReport=()=>{
-        this.props.navigation.navigate('TransDashBoard'); 
+        this.props.navigation.navigate('ReportDashBoard'); 
     }
     render() {
         return(
             <View style={styles.container}>
                 <View style={styles.textbox}>
-                    <Button onPress={() => this._onTransaction()}>
+                    <Button onPress={() => this._onReport()}>
                         Report
                     </Button>
                 </View>

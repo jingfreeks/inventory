@@ -12,10 +12,11 @@ import Category from './form/setups/category';
 import Product from './form/setups/product';
 import Invtypes from './form/setups/invtype';
 
-import ReportInvBalance from './form/report/invBalance';
+import ReportInvBalance from './form/report/invbalance';
 import ReportProduct from './form/report/product';
 import ReportReleasing from './form/report/releasing';
 import ReportRecieving from './form/report/recieving';
+import ReportDashBoard from './form/report/dashboard';
 
 import { createStackNavigator } from 'react-navigation';
 
@@ -67,6 +68,9 @@ const reportsNav=createStackNavigator({
     },
     ReportReleasing:{
         screen:ReportReleasing
+    },
+    ReportDashBoard:{
+        screen:ReportDashBoard
     }
 });
 
@@ -107,6 +111,9 @@ const Navigator=createStackNavigator({
     },
     ReportRecieving:{
         screen:ReportRecieving
+    },
+    ReportDashBoard:{
+        screen:ReportDashBoard
     },
     TransDashBoard:{
         screen:TransDashBoard
