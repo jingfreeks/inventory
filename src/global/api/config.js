@@ -1,5 +1,5 @@
 export default{
     clientId:'',
-    url:'192.168.1.200'
+    url:'http://192.168.1.200:8080/'
 }
 

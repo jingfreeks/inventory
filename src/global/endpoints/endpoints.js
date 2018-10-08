@@ -1,5 +1,5 @@
 import {store} from '../store';
-import { bankInfo } from '../containers/Employees/data/activeProfile/api';
+//import { bankInfo } from '../containers/Employees/data/activeProfile/api';
 
 
 export const getActiveUsername = () => {
@@ -34,10 +34,12 @@ export let newBaseURL = {
 
 
 export let setups = {
-	category: function(payload){
-		return(
-			'codelist/employmentoption'
-		);
+	category:{
+		getData: function(payload){
+			return(
+				'inventory/api/category/category.json'
+			);
+		},
 	},
 	product: function(payload){
 		return(

@@ -4,8 +4,11 @@ import { Text, View,FlatList } from 'react-native';
 import { List, ListItem,Avatar } from "react-native-elements";
 import { Container, Content,Card,CardSection } from '../../../component';
 import CategoryForm from './forms';
+import * as CategoryActions from '../datas/category/actions';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-export default class Category extends Component {
+export class Category extends Component {
 
     constructor(props){
         
@@ -40,7 +43,7 @@ export default class Category extends Component {
 
     _fetchData=()=>{
 
-        const {page, seed}=this.state;
+        /*const {page, seed}=this.state;
         const url='http://192.168.1.200:8080/inventory/api/category/category.json';
 
         return fetch(url)
@@ -58,8 +61,9 @@ export default class Category extends Component {
             this.setState({
                 error, loading:false
             });
-        });
-    
+        });*/
+
+        this.props.actions.category.get();
     }
 
 
@@ -75,10 +79,11 @@ export default class Category extends Component {
     _keyExtractor = (item, index) => item.code;
 
     render() {
-
+        console.log('loogggggggssssssss',this.props.category);
+        data=this.props.category.data;
         return(
                 <FlatList
-                data={this.state.data}
+                data={data}
                 keyExtractor={this._keyExtractor}
                 renderItem={({ item }) => (
                     <ListItem
@@ -98,3 +103,23 @@ export default class Category extends Component {
         );
     }    
 }
+
+function mapStateToProps(state){
+
+    return{
+        category:state.setups.category,
+    }
+}
+
+function mapDispatchToProps(dispatch){
+    return{
+        actions:{
+            category: bindActionCreators(CategoryActions, dispatch),
+        }
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Category)
