@@ -21,7 +21,7 @@ export default class InventoryBalance extends Component {
     render() {
         return(
             <View>
-                <Textbox>test</Textbox>
+                <Textbox>tests3</Textbox>
             </View>
         );
     }    

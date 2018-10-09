@@ -35,12 +35,20 @@ export const get = payload=>
         .then((response)=>response.json())
         .then((res)=>{
             dispatch(init(res.data))
+            objResponse={...res}
         })
-        .then((exception)=>{
-            dispatch(status([
-                0, exception
-            ]));
-            //console.log('exception: ' + exception.message);
-        })
+		.then(() => {
+			dispatch(status([
+				objResponse.flagno || 0, 
+				objResponse.message || CONSTANTS.ERROR.SERVER
+			]));
+		})
+		.catch((exception) => {
+			dispatch(status([
+				0,
+				exception.message + '.'
+			]));
+			console.log('exception: ' + exception.message);
+		});
     };
 

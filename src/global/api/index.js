@@ -3,7 +3,7 @@ import config from './config';
 
 export const fetchApi=(endPoints,payLoads={},methodParams='POST',headers={})=>{
     let bodyParms='';
-
+    console.log('configggggssss123',config.url + endPoints);
     
     if(methodParams.toUpperCase()==='GET'){
 
@@ -20,7 +20,7 @@ export const fetchApi=(endPoints,payLoads={},methodParams='POST',headers={})=>{
             }
         });
     }else{
-        console.log('configggggssss123');
+
         return fetch(config.url + endPoints,{
             method:methodParams,
             headers:{

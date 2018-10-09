@@ -49,7 +49,7 @@ export default class SetupDashBoard extends Component {
                 </View>
                 <View style={styles.textbox}>
                     <Button onPress={() => this._onInvType()}>
-                        INVENTORY TYPE
+                        INVENTORY TYPES
                     </Button>
                 </View>
                 <View style={styles.textbox}>

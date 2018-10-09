@@ -11,6 +11,7 @@ export const data = (state=initstate, action )=>{
             return action.payload;
             break;
         case actionTypes.UPDATE:
+            //oState.resultLists = oHelper.arrayMerge(oState.resultLists, action.payload, 'notimeinid');
             return action.payload;
             break;
         default:
@@ -21,7 +22,7 @@ export const data = (state=initstate, action )=>{
 
 const status =(state = initstatus, action)=>{
     switch (action.type){
-        case actionTypes.status:
+        case actionTypes.STATUS:
             return action.payload;
             break;
         default:

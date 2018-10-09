@@ -41,17 +41,19 @@ export let setups = {
 			);
 		},
 	},
-	product: function(payload){
-		return(
-			'codelist/paytypeoption/?compid='+
-			getActiveCompany()
-		);
+	product:{ 
+		getData:function(payload){
+			return(
+				'inventory/api/product/product.json'
+			);
+		},
 	},
-	type: function(payload){
-		return(
-			'codelist/governmentbenefits/?compid=' +
-			getActiveCompany()
-		);
+	type: {
+		getData:function(payload){
+			return(
+				'inventory/api/invtype/invtype.json'
+			);
+		},
 	},
 
 }

@@ -21,7 +21,7 @@ export default class Login extends Component {
     render() {
         return(
             <View>
-                <Textbox>test</Textbox>
+                <Textbox>tests1</Textbox>
             </View>
         );
     }    
