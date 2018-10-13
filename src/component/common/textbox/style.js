@@ -18,6 +18,8 @@ export default{
     containerStyle: {
         height: 40,
         flex: 1,
+        marginLeft:5,
+        marginRight:5,
         flexDirection: 'row',
         alignItems: 'center',
     },

@@ -1,30 +1,85 @@
 import React, { Component } from 'react';
-import { Text, View,StyleSheet } from 'react-native';
+import { Text, View,StyleSheet,TouchableHighlight,Modal } from 'react-native';
 import ActionButton from 'react-native-action-button';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Textbox, Button } from '../../../component/common';
+import t from 'tcomb-form-native';
 
-export default class Login extends Component {
+import {FormModal} from '../../../component';
+
+var Form=t.form.Form;
+var Category=t.struct({
+    code:t.String,
+    name:t.String
+});
+var options = {
+    fields: {
+      name: {},
+      code: {}
+    }
+  }; 
+
+
+export default class CategoryForm extends Component {
+
+    constructor(props){
+        
+        super(props);
+
+        this.state={
+            visible:true
+        };
+    }
+
+    componentWillReceiveProps(nextProps) {
+        console.log('logggssss',nextProps);
+        if(this.state.visible !=nextProps.visible){
+            this.setState({
+                visible:nextProps.visible
+            });
+        }
+    }
+
+    _onInvSave=()=>{
+        console.log('clicking here');
+        this.setState({
+            visible:false
+        });
+    }
+
+    _onInvClose=()=>{
+        console.log('clicking here',this.props);
+        this.setState({
+            visible:false
+        });
+    }
     render(){
+        console.log('loggggggggsssss123',this.state.visible)
         return(
-            <View style={{flex:1, backgroundColor: '#f3f3f3'}}>
-                {/* Rest of the app comes ABOVE the action button component !*/}
-                <View>
-                    <Text>test</Text>
+            <FormModal visible={this.state.visible}>
+                <View style={{flex:2,height:100,marginLeft:5,marginRight:5,justifyContent:'center'}}>
+                    <View style={{flex:1,height:100,marginLeft:5,marginRight:5,marginBottom:'40%',marginTop:'40%',backgroundColor:'white'}}>
+                        <Form
+                            ref="Form"
+                            type={Category}
+                            options={options}
+                        />
+                        <View style={{justifyContent: 'center',height:50,}}>
+                            <Button onPress={() => this._onInvSave()}>
+                                SAVE
+                            </Button>
+                        </View>
+                        <View style={{justifyContent: 'center',height:50,}}>
+                            <Button onPress={() => this._onInvClose()}>
+                                CLOSE
+                            </Button>
+                        </View>
+                    </View>
                 </View>
-                <ActionButton buttonColor="rgba(231,76,60,1)">
-                    <ActionButton.Item buttonColor='#9b59b6' title="New Task" onPress={() => console.log("notes tapped!")}>
-                        <Icon name="md-create" style={styles.actionButtonIcon} />
-                    </ActionButton.Item>
-                    <ActionButton.Item buttonColor='#3498db' title="Notifications" onPress={() => {}}>
-                        <Icon name="md-notifications-off" style={styles.actionButtonIcon} />
-                    </ActionButton.Item>
-                    <ActionButton.Item buttonColor='#1abc9c' title="All Tasks" onPress={() => {}}>
-                        <Icon name="md-done-all" style={styles.actionButtonIcon} />
-                     </ActionButton.Item>
-                </ActionButton>
-            </View>
+            </FormModal>
+
         );
+
     }
 }
 

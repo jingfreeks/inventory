@@ -23,6 +23,7 @@ export class Category extends Component {
             seed:1,
             error: null,
             refreshing: false,
+            showForm:false,
         };
     }
 
@@ -45,26 +46,6 @@ export class Category extends Component {
 
     _fetchData=()=>{
 
-        /*const {page, seed}=this.state;
-        const url='http://192.168.1.200:8080/inventory/api/category/category.json';
-
-        return fetch(url)
-        .then((res) => res.json())
-        .then((res) => {
-            this.setState({
-                data: page===1 ? res.data : [...this.state.data,...res.data],
-                error: res.error || null,
-                loading:false,
-                refreshing:false
-            });
-            console.log('aaaaaa',this.state);
-        })
-        .catch((error) =>{
-            this.setState({
-                error, loading:false
-            });
-        });*/
-
         this.props.actions.category.get();
     }
 
@@ -77,11 +58,17 @@ export class Category extends Component {
           title={item.title}
         />
       );
-
+    
+    _addCategory=()=>{
+        console.log("notes tapped!");
+        this.setState({
+            showForm:true,
+        })
+    }
     _keyExtractor = (item, index) => item.code;
 
     render() {
-        console.log('loogggggggssssssss',this.props.category.status);
+        //console.log('loogggggggssssssss',this.state.showForm);
         data=this.props.category.data;
         return(
 
@@ -89,7 +76,7 @@ export class Category extends Component {
             {/* Rest of the app comes ABOVE the action button component !*/}
 
             <ActionButton buttonColor="rgba(231,76,60,1)">
-                <ActionButton.Item buttonColor='#9b59b6' title="New Record" onPress={() => console.log("notes tapped!")}>
+                <ActionButton.Item buttonColor='#9b59b6' title="New Record" onPress={() => this._addCategory()}>
                     <Icon name="md-create" style={styles.actionButtonIcon} />
                 </ActionButton.Item>
             </ActionButton>
@@ -114,6 +101,12 @@ export class Category extends Component {
                     />
 
                 </View>
+            {
+                this.state.showForm ?
+                    <CategoryForm visible={true}/>
+                :
+                    null
+            }
         </View>            
 
         );
