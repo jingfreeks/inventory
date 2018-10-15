@@ -3,8 +3,11 @@ import { Text, View } from 'react-native';
 import { Textbox, Button } from '../../../component/common';
 import { Container, Content,Card,CardSection } from '../../../component';
 import styles from './style';
+import actionLogin from '../datas/login/actions';
+import config from '../../../global/api/config';
 
-export default class Login extends Component {
+
+export class Login extends Component {
     static navigationOptions = {
         title: 'LOGIN',
         headerStyle: {
@@ -19,9 +22,17 @@ export default class Login extends Component {
     }
 
     _onlogin=()=>{
-        this.props.navigation.navigate('DashBoard'); 
+        console.log('configgss',config);
+        //this.props.navigation.navigate('DashBoard'); 
     }
     
+    _onEmailChanged=(text)=>{
+
+    }
+
+    _onPasswordChanged=()=>{
+
+    }
     render() {
         return (
             <Container>
@@ -34,12 +45,25 @@ export default class Login extends Component {
                         </CardSection>
                         <CardSection>
                             <View style={styles.textbox}>
-                                <Textbox label='USERNAME' placeholder='USERNAME@email.com' secureTextEntry={false} />
+                                <Textbox 
+                                    label='USERNAME' 
+                                    placeholder='USERNAME@email.com' 
+                                    secureTextEntry={false} 
+                                    value={this.props.username}
+                                    onChangeText={this._onEmailChanged.bind(this)}
+                                
+                                />
                             </View>
                         </CardSection>
                         <CardSection>
                             <View style={styles.textbox}>
-                                <Textbox label='PASSWORD' placeholder='PASSWORD' secureTextEntry={true} />
+                                <Textbox 
+                                    label='PASSWORD' 
+                                    placeholder='PASSWORD' 
+                                    secureTextEntry={true} 
+                                    value={this.props.password}
+                                    onChangeText={this._onPasswordChanged.bind(this)}
+                                />
                             </View>
                         </CardSection>
                         <CardSection>
@@ -62,3 +86,23 @@ export default class Login extends Component {
         );
     }
 }
+function mapStateToProps(state){
+    
+        return{
+            username:state.security.username,
+            password:state.security.password
+        }
+    }
+    
+function mapDispatchToProps(dispatch){
+        return{
+            actions:{
+                login: bindActionCreators(CategoryActions, dispatch),
+            }
+        }
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Login)

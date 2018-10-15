@@ -52,7 +52,9 @@ export default class CategoryForm extends Component {
             visible:false
         });
     }
-    render(){
+    
+    render()
+    {
         console.log('loggggggggsssss123',this.state.visible)
         return(
             <FormModal visible={this.state.visible}>
