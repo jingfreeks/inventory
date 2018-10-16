@@ -31,8 +31,10 @@ export const fetchlogin = payload=>
         dispatch(status(constants.status.LOADING));
         dispatch(reset())
 
-        api.getData(payload)
-        .then((response)=>response.json())
+        console.log('payloadsss',payload);
+
+        api.fetchLogin(payload)
+        .then((response)=>response)
         .then((res)=>{
             dispatch(init(res.data))
             objResponse={...res}
@@ -55,11 +57,11 @@ export const fetchlogin = payload=>
 
 
 export const emailChanged=payload =>({
-    type:actionTypes.emailChanged,
+    type:actionTypes.EMAIL,
     payload
 });
 
 export const passwordChanged=payload=>({
-    type:actionTypes.passwordChanged,
+    type:actionTypes.PASSWORD,
     payload
 });

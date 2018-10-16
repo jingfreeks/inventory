@@ -20,21 +20,20 @@ export const fetchApi=(endPoints,payLoads={},methodParams='POST',headers={})=>{
             }
         });
     }else{
-
+        console.log('payloadsssss',payLoads);
         return fetch(config.url + endPoints,{
             method:methodParams,
             headers:{
-                Accept:'application/json',
                 'Content-Type':'application/json',
             },
-            body:JSON.stringify(bodyParms),
+            body:JSON.stringify(payLoads),
         })
-        .then((response)=> response.json())
+        .then((response) => response.json())
         .then((responseJson)=>{
             return responseJson;
         })
         .catch((error)=>{
-            if (error.response && error.response.json) {
+            if (error.response && error.response.json()) {
                 error.response.json().then((json) => {
                     if (json) throw json;
                     throw error;

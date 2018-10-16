@@ -3,9 +3,10 @@ import { Text, View } from 'react-native';
 import { Textbox, Button } from '../../../component/common';
 import { Container, Content,Card,CardSection } from '../../../component';
 import styles from './style';
-import actionLogin from '../datas/login/actions';
+import * as actionLogin from '../datas/login/actions';
 import config from '../../../global/api/config';
-
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 export class Login extends Component {
     static navigationOptions = {
@@ -22,17 +23,30 @@ export class Login extends Component {
     }
 
     _onlogin=()=>{
-        console.log('configgss',config);
+        const{username,password}=this.props;
+        const payload={
+            grant_type:'password',
+            client_id:config.clientId,
+            client_secret:config.clientSecret,
+            username:this.props.username,
+            password:this.props.password
+        }
+
+        console.log('logggggggsssssss',this.props.actions.login);
+        this.props.actions.login.fetchlogin(payload);
         //this.props.navigation.navigate('DashBoard'); 
     }
     
     _onEmailChanged=(text)=>{
-
+        console.log('loggggggssss',text);
+        this.props.actions.login.emailChanged(text);
     }
 
-    _onPasswordChanged=()=>{
-
+    _onPasswordChanged=(text)=>{
+        console.log('loggggggssss',text);
+        this.props.actions.login.passwordChanged(text);
     }
+
     render() {
         return (
             <Container>
@@ -87,17 +101,16 @@ export class Login extends Component {
     }
 }
 function mapStateToProps(state){
-    
         return{
-            username:state.security.username,
-            password:state.security.password
+            username:state.security.login.username,
+            password:state.security.login.password
         }
     }
     
 function mapDispatchToProps(dispatch){
         return{
             actions:{
-                login: bindActionCreators(CategoryActions, dispatch),
+                login: bindActionCreators(actionLogin, dispatch),
             }
         }
 }

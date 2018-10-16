@@ -2,9 +2,9 @@ import {store} from '../store';
 //import { bankInfo } from '../containers/Employees/data/activeProfile/api';
 
 
-export const getActiveUsername = () => {
+/*export const getActiveUsername = () => {
 	return store.getState().loginReducer.logininfo.resUsername;
-};
+};*/
 
 export const getActiveUserId = () => {
 	return store.getState().loginReducer.logininfo.userid;
@@ -553,8 +553,7 @@ export let security = {
 	login:{
 		get: function(payload){
 			return(
-				'payrollschedule/currentandprevious?filter=COMPANY&'+
-				'id=' + getActiveCompany()
+				'oauth/token'
 			)
 		},
 

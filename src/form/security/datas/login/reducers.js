@@ -30,9 +30,9 @@ const status =(state = initstatus, action)=>{
     }
 }
 
-const username=(state = initialstate, action)=>{
+const username=(state = initstate, action)=>{
     switch(action.type){
-        case actionTypes.usernameChanged:
+        case 'security/login/username':
             return action.payload;
         default:
             return state;
@@ -40,10 +40,10 @@ const username=(state = initialstate, action)=>{
 
 }
 
-const password=()=>{
+const password=(state = initstate, action)=>{
     switch(action.type){
-        case actionTypes.passwordChanged:
-            return actionTypes.payload;
+        case 'security/login/password':
+            return action.payload;
         default:
             return state;
     }
@@ -53,6 +53,6 @@ const password=()=>{
 export const reducer = combineReducers({
     username:username,
     password:password,
-    accesstoken:accesstoken,
+    //accesstoken:accesstoken,
     status:status
 });

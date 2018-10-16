@@ -1,6 +1,6 @@
 export default{
-    clientId:2,
+    clientId:3,
     clientSecret:'cXPrsfXYYlwq1XW8GpeBXnd1ojWWEv2clI3FSBzI',
-    url:'http://192.168.1.200:8080/'
+    url:'http://192.168.1.200:8000/'
 }
 

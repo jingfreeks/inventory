@@ -1,12 +1,12 @@
 import {combineReducers} from 'redux';
 //import {reducers as reportReducers} from '../form/report/datas/reducers';
 import {reducer as setupReducers} from '../form/setups/datas/reducer';
-//import {reducers as transactReducers} from '../form/transaction/datas/reducers';
+import {reducer as securityReducers} from '../form/security/datas/reducer';
 
 
 const rootReducers=combineReducers({
-    //reports:reportReducers,
-    setups:setupReducers
+    security:securityReducers,
+    setups:setupReducers,
     //transactions:transactReducers
 })
 
