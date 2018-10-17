@@ -25,6 +25,11 @@ export const init = payload => ({
 });
 
 
+export const acesstoken = payload =>({
+    type: actionTypes.ACCESSTOKEN,
+    payload
+});
+
 export const fetchlogin = payload=>
     dispatch =>{
         let objResponse={};
@@ -36,15 +41,12 @@ export const fetchlogin = payload=>
         api.fetchLogin(payload)
         .then((response)=>response)
         .then((res)=>{
-            dispatch(init(res.data))
-            objResponse={...res}
+            dispatch(acesstoken(res))
+            //objResponse={...res}
         })
 		.then(() => {
-            console.log('logggggssssssss',objResponse)
-			dispatch(status([
-				objResponse.flagno || 0, 
-				objResponse.message || CONSTANTS.ERROR.SERVER
-			]));
+
+			dispatch(status([1,'success']));
         })
         .catch((exception) => {
 			dispatch(status([

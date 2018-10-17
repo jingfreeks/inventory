@@ -50,9 +50,19 @@ const password=(state = initstate, action)=>{
 
 }
 
+const accesstoken=(state=initstate,action)=>{
+ 
+    switch(action.type){
+        case 'security/login/accesstoken':
+            return action.payload;
+        default:
+            return state;
+    }
+}
+
 export const reducer = combineReducers({
     username:username,
     password:password,
-    //accesstoken:accesstoken,
+    accesstoken:accesstoken,
     status:status
 });

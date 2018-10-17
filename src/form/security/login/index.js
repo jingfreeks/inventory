@@ -22,7 +22,7 @@ export class Login extends Component {
         headerLeft: null,
     }
 
-    _onlogin=()=>{
+    _onlogin=async()=>{
         const{username,password}=this.props;
         const payload={
             grant_type:'password',
@@ -31,79 +31,93 @@ export class Login extends Component {
             username:this.props.username,
             password:this.props.password
         }
-
-        console.log('logggggggsssssss',this.props.actions.login);
-        this.props.actions.login.fetchlogin(payload);
-        //this.props.navigation.navigate('DashBoard'); 
+        await this.props.actions.login.fetchlogin(payload);
     }
     
     _onEmailChanged=(text)=>{
-        console.log('loggggggssss',text);
         this.props.actions.login.emailChanged(text);
     }
 
     _onPasswordChanged=(text)=>{
-        console.log('loggggggssss',text);
         this.props.actions.login.passwordChanged(text);
     }
 
-    render() {
-        return (
-            <Container>
-                <Content>
-                    <Card>
-                        <CardSection>
-                           <View style={styles.container} >
-                               
-                           </View> 
-                        </CardSection>
-                        <CardSection>
-                            <View style={styles.textbox}>
-                                <Textbox 
-                                    label='USERNAME' 
-                                    placeholder='USERNAME@email.com' 
-                                    secureTextEntry={false} 
-                                    value={this.props.username}
-                                    onChangeText={this._onEmailChanged.bind(this)}
+    _oncancel=()=>{
+        console.log('logggggggggggggssssss',this.props);
+    }
+
+    componentDidUpdate(prevProps) {
+
+        const access_token=this.props.accesstoken;
+        if(access_token){
+            return this.props.navigation.navigate('DashBoard'); 
+        }
+
+    }
+
+
+    _showLogin=(props)=>{
+            return(
+                <Container>
+                    <Content>
+                        <Card>
+                            <CardSection>
+                            <View style={styles.container} >
                                 
-                                />
-                            </View>
-                        </CardSection>
-                        <CardSection>
-                            <View style={styles.textbox}>
-                                <Textbox 
-                                    label='PASSWORD' 
-                                    placeholder='PASSWORD' 
-                                    secureTextEntry={true} 
-                                    value={this.props.password}
-                                    onChangeText={this._onPasswordChanged.bind(this)}
-                                />
-                            </View>
-                        </CardSection>
-                        <CardSection>
-                            <View style={styles.textbox}>
-                                <Button  onPress={() => this._onlogin()}>
-                                    login
-                                </Button>
-                            </View>
-                        </CardSection>
-                        <CardSection>
-                            <View style={styles.textbox}>
-                                <Button>
-                                    Cancel
-                                </Button>
-                            </View>
-                        </CardSection>
-                    </Card>
-                </Content>
-            </Container>
-        );
+                            </View> 
+                            </CardSection>
+                            <CardSection>
+                                <View style={styles.textbox}>
+                                    <Textbox 
+                                        label='USERNAME' 
+                                        placeholder='USERNAME@email.com' 
+                                        secureTextEntry={false} 
+                                        value={this.props.username}
+                                        onChangeText={this._onEmailChanged.bind(this)}
+                                    
+                                    />
+                                </View>
+                            </CardSection>
+                            <CardSection>
+                                <View style={styles.textbox}>
+                                    <Textbox 
+                                        label='PASSWORD' 
+                                        placeholder='PASSWORD' 
+                                        secureTextEntry={true} 
+                                        value={this.props.password}
+                                        onChangeText={this._onPasswordChanged.bind(this)}
+                                    />
+                                </View>
+                            </CardSection>
+                            <CardSection>
+                                <View style={styles.textbox}>
+                                    <Button  onPress={() => this._onlogin()}>
+                                        login
+                                    </Button>
+                                </View>
+                            </CardSection>
+                            <CardSection>
+                                <View style={styles.textbox}>
+                                    <Button onPress={()=>this._oncancel()}>
+                                        Cancel
+                                    </Button>
+                                </View>
+                            </CardSection>
+                        </Card>
+                    </Content>
+                </Container>
+            );
+    }
+    render() {
+
+        return this._showLogin(this.props);
     }
 }
 function mapStateToProps(state){
         return{
             username:state.security.login.username,
-            password:state.security.login.password
+            password:state.security.login.password,
+            accesstoken:state.security.login.accesstoken,
         }
     }
     

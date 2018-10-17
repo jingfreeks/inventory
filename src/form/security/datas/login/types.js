@@ -4,3 +4,4 @@ export const STATUS='security/login/status';
 export const RESET='security/login/reset';
 export const EMAIL='security/login/username';
 export const PASSWORD='security/login/password';
+export const ACCESSTOKEN='security/login/accesstoken';
