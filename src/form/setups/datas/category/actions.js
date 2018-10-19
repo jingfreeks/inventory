@@ -31,7 +31,7 @@ export const get = payload=>
         dispatch(status(constants.status.LOADING));
         dispatch(reset())
 
-        api.getData(payload)
+        api.get(payload)
         .then((response)=>response.json())
         .then((res)=>{
             dispatch(init(res.data))

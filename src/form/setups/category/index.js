@@ -46,7 +46,7 @@ export class Category extends Component {
 
     _fetchData=()=>{
 
-        this.props.actions.category.get();
+        this.props.actions.category.get({accesstoken:this.props.accesstoken.access_token});
     }
 
 
@@ -68,46 +68,51 @@ export class Category extends Component {
     _keyExtractor = (item, index) => item.code;
 
     render() {
-        //console.log('loogggggggssssssss',this.state.showForm);
-        data=this.props.category.data;
+        //console.log('loogggggggssssssss',this.props.accesstoken);
+        const data=this.props.category.data;
         return(
 
-        <View style={{flex:1, backgroundColor: '#f3f3f3'}}>
-            {/* Rest of the app comes ABOVE the action button component !*/}
-
-            <ActionButton buttonColor="rgba(231,76,60,1)">
-                <ActionButton.Item buttonColor='#9b59b6' title="New Record" onPress={() => this._addCategory()}>
-                    <Icon name="md-create" style={styles.actionButtonIcon} />
-                </ActionButton.Item>
-            </ActionButton>
-            <View>
-                    <FlatList
-                        data={data}
-                        keyExtractor={this._keyExtractor}
-                        renderItem={({ item }) => (
-                            <ListItem
-                                roundAvatar
-                                title={`${item.code}`}
-                                subtitle={item.name}
-                                avatar={<Avatar
-                                    medium
-                                    rounded
-                                    title={item.code}
-                                    onPress={() => console.log("Works!")}
-                                    activeOpacity={0.7}
-                                />}
-                            />
-                        )}
-                    />
-
-                </View>
-            {
-                this.state.showForm ?
-                    <CategoryForm visible={true}/>
-                :
-                    null
-            }
-        </View>            
+            <View style={{flex:1, backgroundColor: '#f3f3f3'}}>
+                { this.props.category.data ?
+                        <View>
+                                <FlatList
+                                    data={data}
+                                    keyExtractor={this._keyExtractor}
+                                    renderItem={({ item }) => (
+                                        <ListItem
+                                            roundAvatar
+                                            title={`${item.code}`}
+                                            subtitle={item.name}
+                                            avatar={<Avatar
+                                                medium
+                                                rounded
+                                                title={item.code}
+                                                onPress={() => console.log("Works!")}
+                                                activeOpacity={0.7}
+                                            />}
+                                        />
+                                    )}
+                                />
+                                <ActionButton buttonColor="rgba(231,76,60,1)">
+                                    <ActionButton.Item buttonColor='#9b59b6' title="New Record" onPress={() => this._addCategory()}>
+                                        <Icon name="md-create" style={styles.actionButtonIcon} />
+                                    </ActionButton.Item>
+                                </ActionButton>
+                        </View>
+                    :
+                        <ActionButton buttonColor="rgba(231,76,60,1)">
+                            <ActionButton.Item buttonColor='#9b59b6' title="New Record" onPress={() => this._addCategory()}>
+                                <Icon name="md-create" style={styles.actionButtonIcon} />
+                            </ActionButton.Item>
+                        </ActionButton>              
+                }
+                {
+                    this.state.showForm ?
+                        <CategoryForm visible={true}/>
+                    :
+                        null
+                }
+            </View>            
 
         );
     }    
@@ -126,6 +131,7 @@ function mapStateToProps(state){
 
     return{
         category:state.setups.category,
+        accesstoken:state.security.login.accesstoken,
     }
 }
 

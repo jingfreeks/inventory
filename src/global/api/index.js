@@ -3,11 +3,17 @@ import config from './config';
 
 export const fetchApi=(endPoints,payLoads={},methodParams='POST',headers={})=>{
     let bodyParms='';  
-    console.log('configggggssss123',config.url + endPoints);
-    
-    if(methodParams.toUpperCase()==='GET'){
 
-        return fetch(config.url + endPoints)
+    //console.log('payloadsssss',payLoads);
+    if(methodParams.toUpperCase()==='GET'){
+        console.log('configggggssss123',config.url + endPoints);
+        return fetch(config.url + endPoints,{
+            method:methodParams,
+            headers:{
+                'Content-Type':'application/json',
+                'Authorization':'Bearer ' + payLoads.accesstoken
+            }
+        })
         .catch((error)=>{
             console.error(error);
             if (error.response && error.response.json) {
@@ -20,7 +26,7 @@ export const fetchApi=(endPoints,payLoads={},methodParams='POST',headers={})=>{
             }
         });
     }else{
-        console.log('payloadsssss',payLoads);
+
         return fetch(config.url + endPoints,{
             method:methodParams,
             headers:{

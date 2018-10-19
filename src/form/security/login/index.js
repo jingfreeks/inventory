@@ -47,8 +47,7 @@ export class Login extends Component {
     }
 
     componentDidUpdate(prevProps) {
-
-        const access_token=this.props.accesstoken;
+        const access_token=this.props.accesstoken.access_token;
         if(access_token){
             return this.props.navigation.navigate('DashBoard'); 
         }
@@ -114,6 +113,7 @@ export class Login extends Component {
     }
 }
 function mapStateToProps(state){
+
         return{
             username:state.security.login.username,
             password:state.security.login.password,

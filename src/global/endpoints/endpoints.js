@@ -34,10 +34,11 @@ export let newBaseURL = {
 
 
 export let setups = {
+
 	category:{
-		getData: function(payload){
+		get: function(payload){
 			return(
-				'inventory/api/category/category.json'
+				'api/categories'
 			);
 		},
 	},

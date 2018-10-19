@@ -58,44 +58,88 @@ export class Invtype extends Component {
     }
     render() {
         const {data,status}=this.props.invtype;
-        return(
+        /*return(
         <View style={{flex:1, backgroundColor: '#f3f3f3'}}>
-            {/* Rest of the app comes ABOVE the action button component !*/}
+
 
                 <ActionButton buttonColor="rgba(231,76,60,1)">
                     <ActionButton.Item buttonColor='#9b59b6' title="New Record" onPress={() => this._addInvtype()}>
                         <Icon name="md-create" style={styles.actionButtonIcon} />
                     </ActionButton.Item>
                 </ActionButton>
-            <View>
-                <FlatList
-                    data={data}
-                    keyExtractor={this._keyExtractor}
-                    renderItem={({ item }) => (
-                        <ListItem
-                            roundAvatar
-                            title={`${item.code}`}
-                            subtitle={item.name}
-                            avatar={<Avatar
-                                medium
-                                rounded
-                                title={item.code}
-                                onPress={() => console.log("Works!")}
-                                activeOpacity={0.7}
-                            />}
-                        />
-                    )}
-                />
-
+                 }
+                <View>
+                    <FlatList
+                        data={data}
+                        keyExtractor={this._keyExtractor}
+                        renderItem={({ item }) => (
+                            <ListItem
+                                roundAvatar
+                                title={`${item.code}`}
+                                subtitle={item.name}
+                                avatar={<Avatar
+                                    medium
+                                    rounded
+                                    title={item.code}
+                                    onPress={() => console.log("Works!")}
+                                    activeOpacity={0.7}
+                                />}
+                            />
+                        )}
+                    />
+                        
                 {
-                this.state.showForm ?
-                    <ProductForm visible={true}/>
-                :
-                    null
+                    this.state.showForm ?
+                        <ProductForm visible={true}/>
+                    :
+                        null
                 }
 
             </View>
         </View>
+        );*/
+        return(
+            <View style={{flex:1, backgroundColor: '#f3f3f3'}}>
+                { data ?
+                        <View>
+                                <FlatList
+                                    data={data}
+                                    keyExtractor={this._keyExtractor}
+                                    renderItem={({ item }) => (
+                                        <ListItem
+                                            roundAvatar
+                                            title={`${item.code}`}
+                                            subtitle={item.name}
+                                            avatar={<Avatar
+                                                medium
+                                                rounded
+                                                title={item.code}
+                                                onPress={() => console.log("Works!")}
+                                                activeOpacity={0.7}
+                                            />}
+                                        />
+                                    )}
+                                />
+                                <ActionButton buttonColor="rgba(231,76,60,1)">
+                                    <ActionButton.Item buttonColor='#9b59b6' title="New Record" onPress={() => this._addCategory()}>
+                                        <Icon name="md-create" style={styles.actionButtonIcon} />
+                                    </ActionButton.Item>
+                                </ActionButton>
+                        </View>
+                    :
+                        <ActionButton buttonColor="rgba(231,76,60,1)">
+                            <ActionButton.Item buttonColor='#9b59b6' title="New Record" onPress={() => this._addCategory()}>
+                                <Icon name="md-create" style={styles.actionButtonIcon} />
+                            </ActionButton.Item>
+                        </ActionButton>              
+                }
+                {
+                    this.state.showForm ?
+                        <CategoryForm visible={true}/>
+                    :
+                        null
+                }
+            </View>
         );
     }    
 }
