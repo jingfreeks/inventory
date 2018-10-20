@@ -58,46 +58,7 @@ export class Invtype extends Component {
     }
     render() {
         const {data,status}=this.props.invtype;
-        /*return(
-        <View style={{flex:1, backgroundColor: '#f3f3f3'}}>
 
-
-                <ActionButton buttonColor="rgba(231,76,60,1)">
-                    <ActionButton.Item buttonColor='#9b59b6' title="New Record" onPress={() => this._addInvtype()}>
-                        <Icon name="md-create" style={styles.actionButtonIcon} />
-                    </ActionButton.Item>
-                </ActionButton>
-                 }
-                <View>
-                    <FlatList
-                        data={data}
-                        keyExtractor={this._keyExtractor}
-                        renderItem={({ item }) => (
-                            <ListItem
-                                roundAvatar
-                                title={`${item.code}`}
-                                subtitle={item.name}
-                                avatar={<Avatar
-                                    medium
-                                    rounded
-                                    title={item.code}
-                                    onPress={() => console.log("Works!")}
-                                    activeOpacity={0.7}
-                                />}
-                            />
-                        )}
-                    />
-                        
-                {
-                    this.state.showForm ?
-                        <ProductForm visible={true}/>
-                    :
-                        null
-                }
-
-            </View>
-        </View>
-        );*/
         return(
             <View style={{flex:1, backgroundColor: '#f3f3f3'}}>
                 { data ?
